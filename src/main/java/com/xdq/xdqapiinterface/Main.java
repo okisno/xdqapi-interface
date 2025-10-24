@@ -5,7 +5,9 @@ import com.xdq.xdqapiinterface.model.User;
 
 public class Main {
     public static void main(String[] args) {
-        XdqApiClient xdqApiClient = new XdqApiClient();
+        String accessKey = "xdq";
+        String secretKey = "abcdefgh";
+        XdqApiClient xdqApiClient = new XdqApiClient(accessKey, secretKey);
         String result1 = xdqApiClient.getNameByGet("心荡秋");
         String result2 = xdqApiClient.getNameByPost("张三");
         User user = new User();
