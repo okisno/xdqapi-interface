@@ -1,7 +1,7 @@
 package com.xdq.xdqapiinterface.controller;
 
-import com.xdq.xdqapiinterface.model.User;
-import com.xdq.xdqapiinterface.utils.SignUtils;
+import com.xdq.xdqapiclientsdk.model.User;
+import com.xdq.xdqapiclientsdk.utils.SignUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,8 @@ import java.net.URLDecoder;
 public class NameController {
 
     @GetMapping("/")
-    public String getNameByGet(String name) {
+    public String getNameByGet(String name, HttpServletRequest request) {
+        System.out.println(request.getHeader("X-Request-red"));
         return "GET 你的名字是" + name;
     }
 
@@ -57,7 +58,8 @@ public class NameController {
             throw new RuntimeException("无权限");
         }
 
-        return "POST 用户名字是" + user.getUsername();
+        String result = "POST 用户名字是" + user.getUsername();
+        return result;
     }
 
 
